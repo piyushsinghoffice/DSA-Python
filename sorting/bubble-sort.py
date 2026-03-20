@@ -14,15 +14,15 @@ def bubble_sort(arr):
     return arr
 
 if __name__ == "__main__":
-    arr = list(range(1,10000))
+    arr = list(range(1,10))
     
     random.shuffle(arr)
 
-    # print("Unsorted Array: ", arr)
+    print("Unsorted Array: ", arr)
 
     start = time.time()
     arr = bubble_sort(arr)
     end = time.time()
     
-    # print("Sorted Array: ", arr)
+    print("Sorted Array: ", arr)
     print(f"Total time: {(end-start):.2f}")
