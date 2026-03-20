@@ -2,26 +2,33 @@ import time
 import random
 
 def partition(a, l, h):
-    pivot = a[h]
+    pivot = a[l]
     i = l - 1
+    j = h + 1
     
-    for j in range(l, h):
-        if a[j] <= pivot:
+    while True:
+        i += 1
+        while a[i] < pivot:
             i += 1
-            a[i], a[j] = a[j], a[i]
-    
-    a[i + 1], a[h] = a[h], a[i + 1]
-    return i + 1
+        
+        j -= 1
+        while a[j] > pivot:
+            j -= 1
+        
+        if i >= j:
+            return j
+        
+        a[i], a[j] = a[j], a[i]
 
 
 def quick_sort(a, l, h):
     if l < h:
-        p = partition(a, l, h)
-        quick_sort(a, l, p - 1)
-        quick_sort(a, p + 1, h)
+        j = partition(a, l, h)
+        quick_sort(a, l, j)
+        quick_sort(a, j + 1, h)
 
 if __name__ == "__main__":
-    arr = list(range(1,10000))
+    arr = list(range(1,10))
     
     random.shuffle(arr)
 
